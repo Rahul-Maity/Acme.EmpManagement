@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Acme.EmpManagement.Application.Contracts\Acme.EmpManagement.Application.Contracts.csproj" />
     <ProjectReference Include="..\Acme.EmpManagement.Domain.Shared\Acme.EmpManagement.Domain.Shared.csproj" />
   </ItemGroup>
 

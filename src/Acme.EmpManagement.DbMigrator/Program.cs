@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
+using Volo.Abp.PermissionManagement;
 
 namespace Acme.EmpManagement.DbMigrator;
 
@@ -37,5 +38,8 @@ class Program
             .ConfigureServices((hostContext, services) =>
             {
                 services.AddHostedService<DbMigratorHostedService>();
+
+
+               
             });
 }
