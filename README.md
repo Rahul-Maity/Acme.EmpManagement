@@ -8,7 +8,8 @@ This is a layered startup solution based on [Domain Driven Design (DDD)](https:/
 
 * [.NET 8.0+ SDK](https://dotnet.microsoft.com/download/dotnet)
 * [Node v18 or 20](https://nodejs.org/en)
-
+## HR Login
+### Mail id `hremail@email.com` and password `1q2w3E*`
 ### Configurations
 
 The solution comes with a default configuration that works out of the box. However, you may consider to change the following configuration before running your solution:
