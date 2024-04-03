@@ -13,8 +13,8 @@ using Volo.Abp.EntityFrameworkCore;
 namespace Acme.EmpManagement.Migrations
 {
     [DbContext(typeof(EmpManagementDbContext))]
-    [Migration("20240329102638_Employee_Updated")]
-    partial class Employee_Updated
+    [Migration("20240403050233_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

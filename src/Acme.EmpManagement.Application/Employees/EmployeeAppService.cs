@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Acme.EmpManagement.Permissions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,13 @@ namespace Acme.EmpManagement.Employees;
             >,
         IEmployeeAppService
     {
-    public EmployeeAppService(IRepository<Employee,Guid>repository):base(repository) { }
+    public EmployeeAppService(IRepository<Employee,Guid>repository):base(repository) {
+        GetPolicyName = EmpManagementPermissions.Employees.Default;
+        GetListPolicyName = EmpManagementPermissions.Employees.Default;
+        CreatePolicyName = EmpManagementPermissions.Employees.Create;
+        UpdatePolicyName = EmpManagementPermissions.Employees.Edit;
+        DeletePolicyName = EmpManagementPermissions.Employees.Delete;
+    }
     
 }
 

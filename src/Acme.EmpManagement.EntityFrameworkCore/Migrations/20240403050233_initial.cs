@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Acme.EmpManagement.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -391,6 +391,24 @@ namespace Acme.EmpManagement.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AppDepartments",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    name = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false),
+                    ExtraProperties = table.Column<string>(type: "text", nullable: false),
+                    ConcurrencyStamp = table.Column<string>(type: "character varying(40)", maxLength: 40, nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    CreatorId = table.Column<Guid>(type: "uuid", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    LastModifierId = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AppDepartments", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "OpenIddictApplications",
                 columns: table => new
                 {
@@ -686,6 +704,33 @@ namespace Acme.EmpManagement.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AppEmployees",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    FullName = table.Column<string>(type: "text", nullable: false),
+                    Position = table.Column<string>(type: "text", nullable: false),
+                    age = table.Column<int>(type: "integer", nullable: false),
+                    DepartmentId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ExtraProperties = table.Column<string>(type: "text", nullable: false),
+                    ConcurrencyStamp = table.Column<string>(type: "character varying(40)", maxLength: 40, nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    CreatorId = table.Column<Guid>(type: "uuid", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    LastModifierId = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AppEmployees", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AppEmployees_AppDepartments_DepartmentId",
+                        column: x => x.DepartmentId,
+                        principalTable: "AppDepartments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "OpenIddictAuthorizations",
                 columns: table => new
                 {
@@ -976,6 +1021,11 @@ namespace Acme.EmpManagement.Migrations
                 column: "UserName");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AppEmployees_DepartmentId",
+                table: "AppEmployees",
+                column: "DepartmentId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_OpenIddictApplications_ClientId",
                 table: "OpenIddictApplications",
                 column: "ClientId");
@@ -1079,6 +1129,9 @@ namespace Acme.EmpManagement.Migrations
                 name: "AbpUserTokens");
 
             migrationBuilder.DropTable(
+                name: "AppEmployees");
+
+            migrationBuilder.DropTable(
                 name: "OpenIddictScopes");
 
             migrationBuilder.DropTable(
@@ -1098,6 +1151,9 @@ namespace Acme.EmpManagement.Migrations
 
             migrationBuilder.DropTable(
                 name: "AbpUsers");
+
+            migrationBuilder.DropTable(
+                name: "AppDepartments");
 
             migrationBuilder.DropTable(
                 name: "OpenIddictAuthorizations");

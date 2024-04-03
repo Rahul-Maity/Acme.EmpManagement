@@ -1,8 +1,15 @@
 {
   "culture": "en",
   "texts": {
+    "Permission:EmpManagement": "Employee Management",
+    "Permission:Employees": "Employee Management",
+    "Permission:Employees.Create": "Creating new employees",
+    "Permission:Employees.Edit": "Editing the employees",
+    "Permission:Employees.Delete": "Deleting the employees",
+    "Permission:Dashboard": "Dashboard",
     "Menu:Home": "Home",
     "Welcome": "Welcome",
     "LongWelcomeMessage": "Welcome to the application. This is a startup project based on the ABP framework. For more information, visit abp.io."
-  }
+  },
+
 }
